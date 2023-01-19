@@ -1,0 +1,122 @@
+def dizi_yazdir(gelen_dizi):
+    ekle = ""
+    for eleman in gelen_dizi:
+        ekle = ekle + " " + str(eleman)
+    print(ekle)
+
+def baslik_yazdir(baslik):
+    print()
+    print("----------" + baslik + "-----------")
+def uygulama():
+    baslik_yazdir("Dizi Tanımla")
+    adlar = ["ayşe", "fatma", "ali", "mehmet"]
+    dizi_yazdir(adlar)
+
+    baslik_yazdir("Dizi Sonuna Ekle")
+    adlar.append("selim")
+    dizi_yazdir(adlar)
+
+    baslik_yazdir("İndise Atama")
+    indis = 2
+    adlar[indis] = "zehra"
+    dizi_yazdir(adlar)
+
+    baslik_yazdir("Araya Ekle")
+    adlar.insert(3, "kübra")
+    dizi_yazdir(adlar)
+
+    baslik_yazdir("Eleman Silme")
+    adlar.remove("selim")
+    dizi_yazdir(adlar)
+
+    baslik_yazdir("İndis ile Eleman Çıkarma")
+    print(adlar.pop(2))
+    dizi_yazdir(adlar)
+
+    
+
+uygulama()
+def uygulama():
+    baslik_yazdir("Kullanıcıdan Sayıları Al ve Yazdır")
+    sayi_dizisi = []
+    while 1:
+        say = int(input("Pozitif tam sayı giriniz, (çıkış için -1 giriniz):"))
+        if say != -1:
+            sayi_dizisi.append(say)
+        else:
+            break
+    dizi_yazdir(sayi_dizisi)
+
+    baslik_yazdir("Dizinin Sayılarını Topla")
+    toplam = 0
+    for sayi in sayi_dizisi:
+        toplam += sayi
+    print("Dizilerin sayıları toplamı:" + str(toplam))
+
+    baslik_yazdir("Dizi Elemanları Yerine Karelerini Ata")
+    i = 0
+    for sayi in sayi_dizisi:
+        sayi_dizisi[i] = sayi*sayi
+        i += 1
+    dizi_yazdir(sayi_dizisi)
+
+uygulama()
+def uygulama():
+    baslik_yazdir("Kullanıcıdan Diziye Koşullu Veri Alma")
+    dizi = []
+    while 1:
+        sayi = int(input("Pozitif bir tam sayı giriniz, çıkış için -1 giriniz:"))
+        if sayi == -1:
+            break
+        elif sayi <= 0:
+            print("Hatalı giriş yaptınız.")
+            exit()
+        else:
+            dizi.append(sayi)
+    dizi_yazdir(dizi)
+
+    baslik_yazdir("Dizinin çift elemanlarını bir diziye tek elemanlarını bir diziye atma")
+    dizi = [3,56,78,99,101,456,789,976,323,455,664,2,68,8,3]
+    tek_dizi = []
+    çift_dizi = []
+    while dizi != []:
+        eleman = dizi.pop(0)
+        if eleman%2 == 0:
+            çift_dizi.append(eleman)
+        else:
+            tek_dizi.append(eleman)
+    dizi_yazdir(tek_dizi)
+    dizi_yazdir(çift_dizi)
+
+    baslik_yazdir("Diziden tek sayıları alıp başka diziye atma")
+    dizi = [3,56,78,99,101,456,789,976,323,455,664,2,68,8,3]
+    tek_dizi = []
+    i = 0
+    while i < len(dizi):
+        if dizi[i]%2 != 0:
+            eleman = dizi.pop(i)
+            tek_dizi.append(eleman)
+        else:
+            i += 1
+    dizi_yazdir(dizi)
+    dizi_yazdir(tek_dizi)
+
+uygulama()
+def uygulama():
+    dosya = open("deneme.txt", "w")
+    while 1:
+        say = int(input("Pozitif tam sayı giriniz, (çıkış için -1 giriniz):"))
+        if say != -1:
+            dosya.write(str(say) + "\n")
+        else:
+            break
+
+def uygulama2():
+    dosya = open("deneme.txt", "r")
+    toplam = 0
+    for line in dosya.readlines():
+        toplam += int(line)
+    print(toplam)
+
+uygulama()
+uygulama2()
