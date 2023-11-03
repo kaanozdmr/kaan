@@ -1,66 +1,112 @@
-# kaan
-cumle = input("bir metin girin")
-sayi = int(input("sayi giriniz(saat)"))
-def sayi_harfler(a):
-    harf_sayisi = {}
-    for harf in a:
-        if harf in harf_sayisi:
-            harf_sayisi[harf] += 1
-        else:
-            harf_sayisi[harf] = 1
-    for harf, b in harf_sayisi.items():
-        print(harf, "=", b, " tane")
-print()
-sayi_harfler(cumle)
-def saat(yukseklik):
-    print()
-    for c in range(yukseklik + 1, 0, -1):
-        print(("* " * c).center(27))
-    for c in range(1, yukseklik + 2):
-        print(("* " * c).center(27))
-saat(sayi)
-##asal sayı
-sayi=int(input("Sayıyı Girin : "))
-if sayi > 1:
-   
-   for i in range(2,sayi):
-       if (sayi % i) == 0:
-           print(sayi," Asal Sayı Değildir.")
-           break
-   else:
-       print(sayi," Asal Sayıdır.")
- 
-else:
-   print(sayi," Asal Sayı Değildir.")
- ##
-dosya = open()
-satirlar = dosya.read().split()
-dosya.close()
-dosya = open()
-for satir in satirlar:
-  boyut, karakter = satir.split(&quot; &quot;)
-    for i in range(int(boyut),0,-1):
-      for j in range(int(boyut)-i+1):
-        dosya.write(" ")
-      for j in range(2*i-1):
-        dosya.write(karakter)
-      dosya.write("\n")
+class Bag:
 
-dosya.close()
-n = 5
-for i in range(n):
-    for j in range(n-i):
-        print(" ", end="")
-    for k in range(i+1):
-        print("*", end="")
-    print()
- ##
- cumle = input("Bir cümle yazınız: ")
-kelimeler = cumle.split(" ")
-sayilar = []
-for k in range(len(kelimeler)):
-     gelen_kelime = kelimeler[k]
-     say = 0
-     for j in range(len(gelen_kelime)):
-         say+= 1
-     sayilar =sayilar + [say]
+    def __init__(self):
+
+        self.TheItems = list()
+
+
+
+
+
+    def __len__(self):
+
+        return len(self.TheItems)
+
+
+
+    def __contains__(self, item):
+
+        return item in self.TheItems
+
+
+
+
+
+    def add(self,item):
+
+        self.TheItems.append(item)
+
+
+
+    def remove(self,item):
+
+        assert item in self.TheItems
+
+        ndx = self.TheItems.index(item)
+
+        return self.TheItems.pop(ndx)
+
+
+
+
+
+    def __iter__(self):
+
+        return BagIteretor(self.TheItems)
+
+
+
+class BagIteretor:
+
+    def __init__(self,theList):
+
+        self.bagItems = theList
+
+        self.curItem = 0
+
+
+
+
+
+    def __iter__(self):
+
+        return self
+
+
+
+
+
+    def __next__(self):
+
+        if self.curItem < len(self.bagItems):
+
+            item = self.bagItems(self.curItem)
+
+            self.curItem +=1
+
+            return item
+
+        else:
+
+            raise StopIteration
+
+
+
+b1 = Bag()
+
+
+
+b1.add("kaan")
+
+b1.add("rli")
+
+b1.add(12)
+
+b1.add(89)
+
+
+
+
+
+print(b1.__len__())
+
+print(b1.__contains__("kaan"))
+
+b1.remove("kaan")
+
+
+
+print(b1.__contains__("kaan"))
+
+
+
